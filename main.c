@@ -5,9 +5,7 @@
 #include "menu.h"
 
 
-//Pre declaração das funções
 
-//Pre declaração das funções
 
 struct aluno{
   char nome[31];
@@ -25,6 +23,19 @@ ALUNOS *var_inicio;//Inicio das listas
 ALUNOS *var_nova_lista;//Var para guardar nova listas (*px)
 ALUNOS *var_lista_atual;//var para guardar as endereço das var atual (*seg)
 ALUNOS *var_proxima;//Var para marcar o fim da celula e liga listas em listas (*px)
+
+
+
+
+//Pre declaração das funções
+int novo_aluno(ALUNOS *dados_aluno);
+int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas);
+//Pre declaração das funções
+
+
+
+
+
 //--------------------------------------------------------------//
 //Main
 int main(void) {
@@ -98,6 +109,10 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 
   }
   return qtd_listas;
+  /*To-do
+  Fazer testes para verificar a funcionabilidade da função 
+  e se caso algo estiver errado concertar
+  */
 }
 //--------------------------------------------------------------//
 
@@ -118,7 +133,7 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 */
 
 
-int novo_alun(ALUNOS *dados_aluno){
+int novo_aluno(ALUNOS *dados_aluno){
 
   printf("Insira o nome do aluno: \n");
   fgets(dados_aluno -> nome, sizeof(dados_aluno -> nome), stdin);//Substituto para o gets();
@@ -144,7 +159,7 @@ int novo_alun(ALUNOS *dados_aluno){
   printf("Insira a nota do 3 Periodo: \n");
   scanf("%f",&dados_aluno -> notas[2]);
 
-  /*
+  /*to-do
     criar uma função abaixo dessa para fazer a media entre os
     4 bimestres e apos isso o valor (dados_aluno -> aprovao)
     possa passar para true caso o aluno tenha nota na media
