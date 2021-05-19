@@ -12,7 +12,10 @@
 struct aluno{
   char nome[31];
   char turma[3];
-  float notas;
+  float notas[4];
+  int idade;
+  int numero;
+  bool aprovado;
   struct aluno *var_proxima;//px 
 };
 
@@ -101,9 +104,6 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 
 
 
-
-
-
 //--------------------------------------------------------------//
 /*
 *📃Função para escrever novo alunos📃
@@ -118,28 +118,45 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 */
 
 
-int novo_alun ,int num_indent){
+int novo_alun(ALUNOS *dados_aluno){
 
   printf("Insira o nome do aluno: \n");
-  scanf("%c",&nome);
+  fgets(dados_aluno -> nome, sizeof(dados_aluno -> nome), stdin);//Substituto para o gets();
+
   printf("Insira a turma do aluno: \n");
-  scanf("%c",&turma);
+  fgets(dados_aluno -> turma, sizeof(dados_aluno -> turma), stdin);//Substituto para o gets();
+
+  //
   printf("Insira a idade do aluno: \n");
-  scanf("%d",&idade);
+  scanf("%d",&dados_aluno -> idade);
+
+  //Numero de aluno
   printf("Insira o numero do aluno: \n");
-  scanf("%d",&num_indent);
+  scanf("%d",&dados_aluno -> numero);
+
+  //Notas dos 4 periodos
   printf("Insira a nota do 1 Periodo: \n");
-  scanf("%d",&nota_1p);
+  scanf("%f",&dados_aluno -> notas[0]);
   printf("Insira a nota do 2 Periodo: \n");
-  scanf("%d",&nota_2p);
+  scanf("%f",&dados_aluno -> notas[1]);
   printf("Insira a nota do 3 Periodo: \n");
-  scanf("%d",&nota_3p);){
+  scanf("%f",&dados_aluno -> notas[2]);
+  printf("Insira a nota do 3 Periodo: \n");
+  scanf("%f",&dados_aluno -> notas[2]);
 
-
+  /*
+    criar uma função abaixo dessa para fazer a media entre os
+    4 bimestres e apos isso o valor (dados_aluno -> aprovao)
+    possa passar para true caso o aluno tenha nota na media
+    ou passe para false caso tenha nota abaixo da media 
+  */
   return 0;
 }
 //--------------------------------------------------------------//
 
+
+
+//--------------------------------------------------------------//
 
 
 
