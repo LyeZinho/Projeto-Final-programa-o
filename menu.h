@@ -3,7 +3,7 @@
 
 void funcao(){
 int opcao_menu;
-  printf("        Menu Principal\n\n");
+  printf("       Menu Principal\n\n");
   printf("[1]-Introdução de dados do Aluno\n"
          "[2]-Media dos alunos\n"
          "[3]-Listagem dos dados\n"
