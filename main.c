@@ -30,6 +30,7 @@ ALUNOS *var_proxima;//Var para marcar o fim da celula e liga listas em listas (*
 //Pre declaração das funções
 int novo_aluno(ALUNOS *dados_aluno);
 int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas);
+void ler_dados(ALUNOS* entrada);
 //Pre declaração das funções
 
 
@@ -52,20 +53,13 @@ int main(void) {
 //--------------------------------------------------------------//
 /*
 *📃Função para escrever novo alunos📃
-*
-📌Nome da função: nova_lista
-*
-📌Parametros:
-*
--> num_extra(quantidade de celulas a criar nota: cada lista tem que ter no minimo 2 celulas) [int]
-*
--> endereco_lista(endereço da lista que foi criada) [ALUNOS *]
-*
--> contar_lista(true / false ativa ou desativa a contagem de listas criadas) [bool]
-*
-📌Retorno: caso (bool)contar_listas == true retorna o numero de listas
-*
-✨ [ https://replit.com/join/ttblpkww-lyezinho1 ]
+*📌Nome da função: nova_lista
+*📌Parametros:
+*-> num_extra(quantidade de celulas a criar nota: cada lista tem que ter no minimo 2 celulas) [int]
+*-> endereco_lista(endereço da lista que foi criada) [ALUNOS *]
+*-> contar_lista(true / false ativa ou desativa a contagem de listas criadas) [bool]
+*📌Retorno: caso (bool)contar_listas == true retorna o numero de listas
+*✨ [ https://replit.com/join/ttblpkww-lyezinho1 ]
 */
 
 
@@ -124,14 +118,10 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 //--------------------------------------------------------------//
 /*
 *📃Função para ler dados na lista📃
-*
-📌Nome da função: ler_dados
-*
-📌Parametros:entrada (ALUNOS)
-*
-📌Retorno: void
-*
-✨
+*📌Nome da função: ler_dados
+*📌Parametros:entrada (ALUNOS)
+*📌Retorno: void
+*✨
 */
 
 
@@ -170,13 +160,9 @@ void ler_dados(ALUNOS* entrada){
 //--------------------------------------------------------------//
 /*
 *📃Função para escrever novo alunos📃
-*   
-📌Nome da função: novo_aluno
-
-📌Parametros: ALUNOS *dados_aluno
-
-📌Retorno: <retorno da função>
-*
+*📌Nome da função: novo_aluno
+*📌Parametros: ALUNOS *dados_aluno
+*📌Retorno: <retorno da função>
 *✨ [ https://replit.com/join/ttblpkww-lyezinho1 ] //
 */
 
@@ -207,6 +193,7 @@ int novo_aluno(ALUNOS *dados_aluno){
   printf("Insira a nota do 3 Periodo: \n");
   scanf("%f",&dados_aluno -> notas[2]);
 
+
   /*to-do
     criar uma função abaixo dessa para fazer a media entre os
     4 bimestres e apos isso o valor (dados_aluno -> aprovado)
@@ -217,7 +204,7 @@ int novo_aluno(ALUNOS *dados_aluno){
 }
 //--------------------------------------------------------------//
 
-
+//--------------------------------------------------------------//
 
 //--------------------------------------------------------------//
 
