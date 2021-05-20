@@ -13,7 +13,7 @@ struct aluno{
   float notas[4];
   int idade;
   int numero;
-  bool aprovado;
+  bool status;//Aprovado ou Reprovado
   struct aluno *var_proxima;//px 
 };
 
@@ -53,7 +53,7 @@ int main(void) {
 /*
 *📃Função para escrever novo alunos📃
 *
-📌Nome da função: novalista
+📌Nome da função: nova_lista
 *
 📌Parametros:
 *
@@ -63,7 +63,7 @@ int main(void) {
 *
 -> contar_lista(true / false ativa ou desativa a contagem de listas criadas) [bool]
 *
-📌Retorno: <retorno da função>
+📌Retorno: caso (bool)contar_listas == true retorna o numero de listas
 *
 ✨ [ https://replit.com/join/ttblpkww-lyezinho1 ]
 */
@@ -119,13 +119,61 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 
 
 
+
+
+//--------------------------------------------------------------//
+/*
+*📃Função para ler dados na lista📃
+*
+📌Nome da função: ler_dados
+*
+📌Parametros:entrada (ALUNOS)
+*
+📌Retorno: void
+*
+✨
+*/
+
+
+/*To-do
+Completar a função de ler dados 
+Status: Não testado pressisa ser testado
+*/
+void ler_dados(ALUNOS* entrada){
+  ALUNOS *var_auxiliar = NULL;//aux = inicio
+  var_auxiliar = entrada;//aux = aux -> px
+  float media;
+    do{
+      printf("Nome: %s\n", var_auxiliar -> nome);
+      printf("Numero: %d\n", var_auxiliar -> numero);
+      printf("Idade: %d\n", var_auxiliar -> idade);
+      printf("turma: %s\n", var_auxiliar -> turma);
+      printf("Notas: \n Periodo 1: %f \n Periodo 2: %f \n Periodo 3: %f \n Periodo 4: %f\n", var_auxiliar -> notas[0],
+      var_auxiliar -> notas[1], var_auxiliar -> notas[2], var_auxiliar -> notas[3]);
+      /*
+      Aplicar uma função que faz media das notas
+      */
+      printf("Media: %f\n", media);
+
+      if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");//if status == true Aprovado
+      if(var_auxiliar -> status == false) printf("Status: Reprovado\n");//if status == false Reprovado
+      
+      var_auxiliar = var_auxiliar -> var_proxima;
+
+    }while(var_auxiliar != NULL);
+
+}
+//--------------------------------------------------------------//
+
+
+
 //--------------------------------------------------------------//
 /*
 *📃Função para escrever novo alunos📃
 *   
 📌Nome da função: novo_aluno
-📌Parametros:
 
+📌Parametros: ALUNOS *dados_aluno
 
 📌Retorno: <retorno da função>
 *
@@ -161,8 +209,8 @@ int novo_aluno(ALUNOS *dados_aluno){
 
   /*to-do
     criar uma função abaixo dessa para fazer a media entre os
-    4 bimestres e apos isso o valor (dados_aluno -> aprovao)
-    possa passar para true caso o aluno tenha nota na media
+    4 bimestres e apos isso o valor (dados_aluno -> aprovado)
+    possa passar para true caso o aluno tenha nota acima da media
     ou passe para false caso tenha nota abaixo da media 
   */
   return 0;
@@ -172,6 +220,32 @@ int novo_aluno(ALUNOS *dados_aluno){
 
 
 //--------------------------------------------------------------//
+
+
+
+
+//--------------------------------------------------------------//
+//                           testes                             //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
