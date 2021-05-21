@@ -34,7 +34,7 @@ void ler_dados_alf(ALUNOS* entrada, char letra);
 void ler_dados_num(ALUNOS* entrada, int busca_numero);
 void ler_dados_nom(ALUNOS* entrada, char *busca_nome);
 //Pre declaração das funções
-
+//algo
 
 int main(void) {
 
