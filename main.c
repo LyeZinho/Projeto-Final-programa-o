@@ -8,7 +8,7 @@
 
 
 struct aluno{
-  char nome[31];
+  char nome[101];
   char turma[3];
   float notas[4];
   int idade;
@@ -26,23 +26,21 @@ ALUNOS *var_lista_atual;//var para guardar as endereço das var atual (*seg)
 ALUNOS *var_proxima;//Var para marcar o fim da celula e liga listas em listas (*px)
 
 
-
-
 //Pre declaração das funções
 int novo_aluno(ALUNOS *inicio_lista);
 int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas);
 void ler_dados(ALUNOS* entrada);
+void ler_dados_alf(ALUNOS* entrada, char letra);
+void ler_dados_num(ALUNOS* entrada, int busca_numero);
+void ler_dados_nom(ALUNOS* entrada, char *busca_nome);
 //Pre declaração das funções
-
-
-
-
 
 
 int main(void) {
 
   return 0;
 }
+
 
 
 
@@ -107,8 +105,6 @@ int nova_lista(int num_extra, ALUNOS *endereco_lista, bool contar_listas){
 *📌Retorno: void
 *✨
 */
-
-
 /*To-do
 Completar a função de ler dados 
 Status: Não testado pressisa ser testado
@@ -137,25 +133,24 @@ void ler_dados(ALUNOS* entrada){
 
 
 /*
-*📃Função para ler dados na lista📃
-*📌Nome da função: ler_dados
-*📌Parametros:entrada (ALUNOS)
+*📃Função para ler dados na lista de uma letra📃
+*📌Nome da função: ler_dados_alf
+*📌Parametros:entrada (ALUNOS) letra (char)
 *📌Retorno: void
 *✨
 */
-
-
 /*To-do
 Completar a função de ler dados 
 Status: Não testado pressisa ser testado
+Fazer fluxograma
 */
-void ler_dados_alf(ALUNOS* entrada, char letra){
+void ler_dados_alf(ALUNOS* entrada, char busca_letra){
   ALUNOS *var_auxiliar = NULL;
   var_auxiliar = entrada;
   float media;
     do{
-      char caracter = var_auxiliar -> nome[1];
-        if(caracter == letra){
+
+        if(var_auxiliar -> nome[1] == busca_letra){
           printf("Nome: %s\n", var_auxiliar -> nome);
           printf("Numero: %d\n", var_auxiliar -> numero);
           printf("Idade: %d\n", var_auxiliar -> idade);
@@ -170,6 +165,93 @@ void ler_dados_alf(ALUNOS* entrada, char letra){
           if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
           var_auxiliar = var_auxiliar -> var_proxima;
           }
+        else if(var_auxiliar -> nome[1] != busca_letra){
+          var_auxiliar = var_auxiliar -> var_proxima;
+        }
+    }while(var_auxiliar != NULL);
+
+}
+
+
+
+
+/*
+*📃Função para ler dados na lista de um numero📃
+*📌Nome da função: ler_dados_num
+*📌Parametros:entrada (ALUNOS) num (char)
+*📌Retorno: void
+*✨
+*/
+/*To-do
+Completar a função de ler dados 
+Status: Não testado pressisa ser testado
+Fazer fluxograma
+*/
+void ler_dados_num(ALUNOS* entrada, int busca_numero){
+  ALUNOS *var_auxiliar = NULL;
+  var_auxiliar = entrada;
+  float media;
+    do{
+        if(var_auxiliar -> numero == busca_numero){
+          printf("Nome: %s\n", var_auxiliar -> nome);
+          printf("Numero: %d\n", var_auxiliar -> numero);
+          printf("Idade: %d\n", var_auxiliar -> idade);
+          printf("turma: %s\n", var_auxiliar -> turma);
+          printf("Notas: \n Periodo 1: %f \n Periodo 2: %f \n Periodo 3: %f \n Periodo 4: %f\n", var_auxiliar -> notas[0],
+          var_auxiliar -> notas[1], 
+          var_auxiliar -> notas[2],
+          var_auxiliar -> notas[3]);
+          media = f_media(var_auxiliar -> notas);
+          printf("Media: %f\n", media);
+          if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");
+          if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
+          }
+        else if(var_auxiliar -> numero != busca_numero){
+          var_auxiliar = var_auxiliar -> var_proxima;
+        }
+    }while(var_auxiliar != NULL);
+
+}
+
+
+
+
+/*
+*📃Função para ler dados na lista de um nome📃
+*📌Nome da função: ler_dados_num
+*📌Parametros:entrada (ALUNOS) num (char)
+*📌Retorno: void
+*✨
+*/
+/*To-do
+Completar a função de ler dados 
+Status: Não testado pressisa ser testado
+Fazer fluxograma
+*/
+void ler_dados_nom(ALUNOS* entrada, char *busca_nome){
+  ALUNOS *var_auxiliar = NULL;
+  var_auxiliar = entrada;
+  float media;
+  int string;
+    do{
+      string = strcmp(var_auxiliar -> nome, busca_nome);
+        if(string == 0){
+          printf("Nome: %s\n", var_auxiliar -> nome);
+          printf("Numero: %d\n", var_auxiliar -> numero);
+          printf("Idade: %d\n", var_auxiliar -> idade);
+          printf("turma: %s\n", var_auxiliar -> turma);
+          printf("Notas: \n Periodo 1: %f \n Periodo 2: %f \n Periodo 3: %f \n Periodo 4: %f\n", var_auxiliar -> notas[0],
+          var_auxiliar -> notas[1], 
+          var_auxiliar -> notas[2],
+          var_auxiliar -> notas[3]);
+          media = f_media(var_auxiliar -> notas);
+          printf("Media: %f\n", media);
+          if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");
+          if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
+          }
+        else if(string != 0){
+          var_auxiliar = var_auxiliar -> var_proxima;
+        }
 
     }while(var_auxiliar != NULL);
 
@@ -214,7 +296,7 @@ int novo_aluno(ALUNOS *inicio_lista){
             scanf("%f",&var_inicio -> notas[2]);
           var_auxiliar = var_auxiliar -> var_proxima;
         }
-        else if(var_auxiliar -> registrado == false){
+        else if(var_auxiliar -> registrado == true){
           var_auxiliar = var_auxiliar -> var_proxima;
         }
     }while(var_auxiliar != NULL);

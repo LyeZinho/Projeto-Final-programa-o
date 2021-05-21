@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
+#include "main.c"
 #define arrSize(entrada) sizeof(entrada)/sizeof(entrada[0])
 
 /*
@@ -23,3 +23,12 @@ float f_media(float *dados){
   }
   return med / size;
 }
+
+
+/*
+*📃Função para comparar strings📃   
+*📌Nome da função: 
+*📌Parametros: (float) dados 
+*📌Retorno: <retorno da função>
+*✨ [ https://replit.com/join/ttblpkww-lyezinho1 ] //
+*/
