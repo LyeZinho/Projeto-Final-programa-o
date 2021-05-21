@@ -3,11 +3,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-//Macro arrSize determina o tamanha de um array
-//int arr[10];
-//int i = arrSize(arr);
-//printf("[%d]", i);
-//output> [10]
 #define arrSize(entrada) sizeof(entrada)/sizeof(entrada[0])
 
 /*
@@ -18,13 +13,13 @@
 *✨ [ https://replit.com/join/ttblpkww-lyezinho1 ] //
 */
 
-float media(float dados){
-  int num = arrSize(dados);
+float f_media(float *dados){
+  float med;
+  int size = arrSize(dados);
   int i;
-  float media;
-  for(i = 0; i <= num; i++){
-    media += dados;
+  
+  for(i = 0; i <= size; i++){
+    med = med + dados[i];
   }
-  media = media / num;
-  return media;
+  return med / size;
 }
