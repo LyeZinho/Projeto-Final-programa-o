@@ -7,6 +7,7 @@
 
 
 
+
 struct aluno{
   char nome[101];
   char turma[3];
