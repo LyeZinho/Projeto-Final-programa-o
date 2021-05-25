@@ -33,10 +33,11 @@ void ler_dados_alf(ALUNOS* entrada, char letra);
 void ler_dados_num(ALUNOS* entrada, int busca_numero);
 void ler_dados_nom(ALUNOS* entrada, char *busca_nome);
 void func_del_list(ALUNOS *entrada, char numero_celula);
-bool f_media(float *dados);
+float f_media(float *dados);
 void purge();
 void getstring(char *out);
 void change(bool *input, ALUNOS *entrada);
+bool aprovado(float entrada);
 //Pre declaração das funções
 
 
@@ -57,8 +58,6 @@ int main(void) {
 }
 
 
-
-//Função inutulizada 
 /*
 *📃Função para escrever novo alunos📃
 *📌Nome da função: nova_lista
@@ -142,6 +141,7 @@ void ler_dados(ALUNOS *entrada){
       printf("Notas: \n Periodo 1: %f \n Periodo 2: %f \n Periodo 3: %f \n Periodo 4: %f\n", var_auxiliar -> notas[0],
       var_auxiliar -> notas[1], var_auxiliar -> notas[2], var_auxiliar -> notas[3]);
       media = f_media(var_auxiliar -> notas);
+      var_auxiliar -> status = aprovado(media);
       printf("Media: %f\n", media);
       if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");
       if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
@@ -183,6 +183,7 @@ void ler_dados_alf(ALUNOS* entrada, char busca_letra){
           var_auxiliar -> notas[2],
           var_auxiliar -> notas[3]);
           media = f_media(var_auxiliar -> notas);
+          var_auxiliar -> status = aprovado(media);
           printf("Media: %f\n", media);
           if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");
           if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
@@ -228,6 +229,7 @@ void ler_dados_num(ALUNOS* entrada, int busca_numero){
           var_auxiliar -> notas[2],
           var_auxiliar -> notas[3]);
           media = f_media(var_auxiliar -> notas);
+          var_auxiliar -> status = aprovado(media);
           printf("Media: %f\n", media);
           if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");
           if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
@@ -275,6 +277,7 @@ void ler_dados_nom(ALUNOS* entrada, char *busca_nome){
           var_auxiliar -> notas[2],
           var_auxiliar -> notas[3]);
           media = f_media(var_auxiliar -> notas);
+          var_auxiliar -> status = aprovado(media);
           printf("Media: %f\n", media);
           if(var_auxiliar -> status == true ) printf("Status: Aprovado\n");
           if(var_auxiliar -> status == false) printf("Status: Reprovado\n");
@@ -418,7 +421,7 @@ void func_menu(){
             func_gest_dados();
             break;
         case 2:
-            func_gest_dados();
+            func_gest_list();
             break;
         case 3:
             func_list_dados();
@@ -588,7 +591,7 @@ void func_gest_list(){
 *->Retorno: <retorno da função>
 */
 
-bool f_media(float *dados){
+float f_media(float *dados){
   float med;
   int size = arrSize(dados);
   int i;
@@ -597,12 +600,7 @@ bool f_media(float *dados){
     med = med + dados[i];
   }
   float media = med / size;
-  if(media >= 50.0){
-    return true;
-  }
-  else{
-    return false;
-  }
+  return media;
 }
 
 /*
@@ -619,4 +617,13 @@ void purge(){
 
 void change(bool *input, ALUNOS *entrada){
   entrada -> registrado = true;
+}
+
+bool aprovado(float entrada){
+  if(entrada >= 10){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
